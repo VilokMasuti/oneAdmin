@@ -159,27 +159,3 @@ export const mockAuditLog: AuditLog[] = [
     timestamp: '2024-01-14T11:15:00Z',
   },
 ];
-
-// Helper functions to update data
-export function updateListingStatus(id: string, status: CarListing['status']) {
-  const listing = mockListings.find((l) => l.id === id);
-  if (listing) {
-    listing.status = status;
-  }
-}
-
-export function updateListing(id: string, updates: Partial<CarListing>) {
-  const index = mockListings.findIndex((l) => l.id === id);
-  if (index !== -1) {
-    mockListings[index] = { ...mockListings[index], ...updates };
-  }
-}
-
-export function addAuditLog(log: Omit<AuditLog, 'id' | 'timestamp'>) {
-  const newLog: AuditLog = {
-    ...log,
-    id: Date.now().toString(),
-    timestamp: new Date().toISOString(),
-  };
-  mockAuditLog.unshift(newLog);
-}
