@@ -1,47 +1,41 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { mockListings } from '@/lib/data';
-import { addAuditLog, updateListingStatus } from '@/lib/utils';
+import { NextResponse } from "next/server"
+import {  mockListings } from "@/lib/data"
+import { addAuditLog, updateListingStatus } from "@/lib/utils"
 
-export async function POST(
-  request: NextRequest,
-  context: { params: Record<string, string> } // Fix: Use Record<string, string>
-) {
+interface RouteParams {
+  params: Promise<{ id: string }>
+}
+
+export async function POST(request: Request, context: RouteParams) {
   try {
-    const { id } = context.params; // Access params via context
+    const { id } = await context.params
+    const { adminEmail } = await request.json()
 
-    // Parse JSON body from the request
-    const { adminEmail } = await request.json();
+    console.log("API: Approving listing", id, "by", adminEmail)
 
-    // Find the listing by ID
-    const listing = mockListings.find((l) => l.id === id);
-
-    // If listing is not found, return 404
+    // Find the listing to approve
+    const listing = mockListings.find((l) => l.id === id)
     if (!listing) {
-      return NextResponse.json(
-        { error: 'Listing not found' },
-        { status: 404 }
-      );
+      console.log("API: Listing not found:", id)
+      return NextResponse.json({ error: "Listing not found" }, { status: 404 })
     }
 
-    // Update listing status to "approved"
-    updateListingStatus(id, 'approved');
+    // Update listing status to approved
+    updateListingStatus(id, "approved")
+    console.log("API: Updated listing status to approved")
 
-    // Log the approval action for auditing
+    // Log the approval action for audit trail
     addAuditLog({
-      action: 'Approved',
+      action: "Approved",
       listingId: id,
       listingTitle: listing.title,
-      adminEmail: adminEmail || 'admin@example.com',
-    });
+      adminEmail: adminEmail || "admin@example.com",
+    })
+    console.log("API: Added audit log entry")
 
-    // Return success response
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Approval Error:', error);
-
-    return NextResponse.json(
-      { success: false, error: 'Internal Server Error' },
-      { status: 500 }
-    );
+    console.error("API: Error approving listing:", error)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }
