@@ -1,9 +1,9 @@
 import { mockListings } from '@/lib/data';
 import { addAuditLog, updateListing } from '@/lib/utils';
-import { NextResponse } from 'next/server';
+import { NextResponse ,NextRequest} from 'next/server';
 
 export async function PATCH(
-  request: Request,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
