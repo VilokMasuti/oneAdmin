@@ -1,6 +1,6 @@
+import { NextRequest, NextResponse } from 'next/server';
 import { mockListings } from '@/lib/data';
 import { addAuditLog, updateListing } from '@/lib/utils';
-import { NextResponse ,NextRequest} from 'next/server';
 
 export async function PATCH(
   request: NextRequest,
@@ -11,16 +11,16 @@ export async function PATCH(
     const updates = await request.json();
     const { adminEmail, ...listingUpdates } = updates;
 
-    // Find the listing to edit
-
+    // Find the listing
     const listing = mockListings.find((l) => l.id === id);
     if (!listing) {
       return NextResponse.json({ error: 'Listing not found' }, { status: 404 });
     }
-    // Apply updates to the listing
+
+    // Update listing
     updateListing(id, listingUpdates);
 
-    // Log the edit action for audit trail
+    // Log the change
     addAuditLog({
       action: 'Edited',
       listingId: id,
@@ -30,11 +30,7 @@ export async function PATCH(
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.log(error);
-
-    return NextResponse.json(
-      { error: 'Something went wrong' },
-      { status: 500 }
-    );
+    console.error('PATCH Error:', error);
+    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }
