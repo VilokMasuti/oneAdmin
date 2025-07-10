@@ -3,12 +3,12 @@ import { addAuditLog, updateListing } from '@/lib/utils';
 import { NextResponse } from 'next/server';
 
 interface RouteParams {
-  params: Promise<{ id: string }>
+  params: { id: string }
 }
 
-export async function PATCH(request: Request, context: RouteParams) {
+export async function PATCH(request: Request, { params }: RouteParams) {
   try {
-    const { id } = await context.params
+    const { id } = params
     const updates = await request.json()
     const { adminEmail, ...listingUpdates } = updates
 
