@@ -1,12 +1,13 @@
-import { NextResponse } from "next/server"
-import { mockAuditLog } from "@/lib/data"
+import { mockAuditLog } from '@/lib/data';
+import { NextResponse } from 'next/server';
 
-
-  // Fetch all audit log entries
+// Fetch all audit log entries
 
 export async function GET() {
   // Sort audit logs by timestamp, newest first
-  const sortedLogs = [...mockAuditLog].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+  const sortedLogs = [...mockAuditLog].sort(
+    (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+  );
 
-  return NextResponse.json(sortedLogs)
+  return NextResponse.json(sortedLogs);
 }
