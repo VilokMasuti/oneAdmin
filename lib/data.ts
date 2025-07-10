@@ -37,7 +37,8 @@ export const mockListings: CarListing[] = [
     status: 'pending',
     submittedAt: '2024-01-15T10:30:00Z',
     submittedBy: 'john.doe@email.com',
-    imageUrl: '/placeholder.svg?height=200&width=300',
+    imageUrl:
+      'https://images.unsplash.com/photo-1653227158553-ddaa680cdd65?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Qk1XJTIwWDV8ZW58MHx8MHx8fDA%3D', // BMW X5
   },
   {
     id: '2',
@@ -51,7 +52,8 @@ export const mockListings: CarListing[] = [
     status: 'approved',
     submittedAt: '2024-01-14T14:20:00Z',
     submittedBy: 'jane.smith@email.com',
-    imageUrl: '/placeholder.svg?height=200&width=300',
+    imageUrl:
+      'https://images.unsplash.com/photo-1584381413396-49e6687c7fc3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8TW9kZWwlMjBTJTIwMjAyNCUyMFRlc2xhJTIwTW9kZWwlMjBTJTIwMjAyNHxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
     id: '3',
@@ -65,7 +67,8 @@ export const mockListings: CarListing[] = [
     status: 'rejected',
     submittedAt: '2024-01-13T09:15:00Z',
     submittedBy: 'mike.johnson@email.com',
-    imageUrl: '/placeholder.svg?height=200&width=300',
+    imageUrl:
+      'https://images.unsplash.com/photo-1727111449539-934756114007?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fEhvbmRhJTIwQ2l2aWMlMjAyMDIyfGVufDB8fDB8fHww', // Honda Civic
   },
   {
     id: '4',
@@ -80,7 +83,8 @@ export const mockListings: CarListing[] = [
     status: 'pending',
     submittedAt: '2024-01-12T16:45:00Z',
     submittedBy: 'sarah.wilson@email.com',
-    imageUrl: '/placeholder.svg?height=200&width=300',
+    imageUrl:
+      'https://plus.unsplash.com/premium_photo-1737553374688-09502af61740?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TWVyY2VkZXMlMjBCZW56JTIwQyUyMENsYXNzJTIwMjAyM3xlbnwwfHwwfHx8MA%3D%3D', // Mercedes-Benz C-Class
   },
   {
     id: '5',
@@ -94,7 +98,8 @@ export const mockListings: CarListing[] = [
     status: 'approved',
     submittedAt: '2024-01-11T11:30:00Z',
     submittedBy: 'david.brown@email.com',
-    imageUrl: '/placeholder.svg?height=200&width=300',
+    imageUrl:
+      'https://images.unsplash.com/photo-1709769320408-0e773497e855?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Rm9yZCUyME11c3RhbmclMjAyMDIzfGVufDB8fDB8fHww', // Ford Mustang
   },
   {
     id: '6',
@@ -108,7 +113,8 @@ export const mockListings: CarListing[] = [
     status: 'pending',
     submittedAt: '2024-01-10T13:20:00Z',
     submittedBy: 'emily.davis@email.com',
-    imageUrl: '/placeholder.svg?height=200&width=300',
+    imageUrl:
+      'https://images.unsplash.com/photo-1655225446996-6498fd7b9e0c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8QXVkaSUyMEE0JTIwMjAyMnxlbnwwfHwwfHx8MA%3D%3D6', // Audi A4
   },
   {
     id: '7',
@@ -122,7 +128,8 @@ export const mockListings: CarListing[] = [
     status: 'approved',
     submittedAt: '2024-01-09T08:45:00Z',
     submittedBy: 'robert.miller@email.com',
-    imageUrl: '/placeholder.svg?height=200&width=300',
+    imageUrl:
+      'https://images.unsplash.com/photo-1673241650284-cff4b61ed363?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFRveW90YSUyMENhbXJ5JTIwMjAyM3xlbnwwfHwwfHx8MA%3D%3D', // Toyota Camry (used similar)
   },
   {
     id: '8',
@@ -136,7 +143,8 @@ export const mockListings: CarListing[] = [
     status: 'pending',
     submittedAt: '2024-01-08T15:10:00Z',
     submittedBy: 'lisa.garcia@email.com',
-    imageUrl: '/placeholder.svg?height=200&width=300',
+    imageUrl:
+      'https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cG9yc2NoZSUyMDkxMXxlbnwwfHwwfHx8MA%3D%3D', // Porsche 911
   },
 ];
 

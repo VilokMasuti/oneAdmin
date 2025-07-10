@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Car Rental Admin Dashboard
 
-## Getting Started
+##  Tech Stack
 
-First, run the development server:
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS v4
+- **UI Components**: ShadCN UI
+- **Authentication**: Context API + localStorage
+- **State Management**: React Context
+- **Icons**: Lucide React
+- **Notifications**: Sonner
 
-```bash
-npm run dev
+##  Project Structure
+
+
+├── app/
+│ ├── api/ # API routes
+│ │ ├── listings/ # Listings CRUD operations
+│ │ └── audit-log/ # Audit log endpoints
+│ ├── dashboard/ # Main dashboard page
+│ ├── audit-log/ # Audit trail page
+│ ├── login/ # Authentication page
+│ ├── layout.tsx # Root layout
+│ ├── page.tsx # Home page (redirects)
+│ └── not-found.tsx # 404 page
+├── components/ # Reusable components
+│ ├── ui/ # ShadCN UI components
+│ ├── dashboard-header.tsx # Header with navigation
+│ ├── listings-table.tsx # Main listings table
+│ ├── edit-listing-modal.tsx # Edit modal
+│ ├── pagination.tsx # Pagination controls
+│ └── route-guard.tsx # Authentication guard
+├── services/ # 🔧 Data fetching layer
+│ ├── api.ts # Base API utilities & error handling
+│ ├── listings.ts # Listings API calls (fetch, approve, reject, edit)
+│ ├── audit.ts # Audit log API calls
+│ └── auth.ts # Authentication API calls
+├── lib/ # Utilities and data
+│ ├── auth-context.tsx # Authentication context
+│ ├── data.ts # Mock data and helpers
+│ └── utils.ts # Utility functions
+└── README.md
+\`\`\`
+
+##  Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   \`\`\`bash
+   git clone <repository-url>
+   cd car-rental-admin-dashboard
+   \`\`\`
+
+2. **Install dependencies**
+   \`\`\`bash
+   npm install
+
+   # or
+
+   yarn install
+   \`\`\`
+
+3. **Run the development server**
+   \`\`\`bash
+   npm run dev
+   # or
+   yarn dev
+   \`\`\`
+
+### Demo Login
+
+- Use any email and password to log in
+- The authentication is mocked for demonstration purposes
+
+##  Pages & Features
+
+### 1. Login Page (`/login`)
+
+- Clean authentication form
+- Input validation with toast notifications
+- Demo login message
+- Automatic redirect after successful login
+
+### 2. Dashboard (`/dashboard`)
+
+- Paginated listings table (10 items per page)
+- Status filtering (All, Pending, Approved, Rejected)
+- Search functionality
+- Bulk actions (Approve, Reject, Edit)
+- Real-time status updates
+- Mobile-responsive table
+
+### 3. Edit Listing Modal
+
+- Pre-filled form with existing data
+- Comprehensive validation
+- Real-time updates after save
+- Mobile-friendly modal design
+
+### 4. Audit Log (`/audit-log`)
+
+- Complete action history
+- Admin tracking
+- Timestamp information
+- Filterable and searchable
+
+##  Design System
+
+### Theme
+
+- **Primary Colors**: Modern dark theme
+- **Typography**: Inter font family
+- **Spacing**: Consistent 4px grid system
+- **Components**: ShadCN UI component library
+
+## 🔧 API Endpoints
+
+### Listings
+
+- `GET /api/listings` - Fetch listings with pagination and filters
+- `POST /api/listings/[id]/approve` - Approve a listing
+- `POST /api/listings/[id]/reject` - Reject a listing
+- `PATCH /api/listings/[id]/edit` - Update a listing
+
+### Audit Log
+
+- `GET /api/audit-log` - Fetch audit trail
+
+##  Performance Optimizations
+
+- **React.memo**: Optimized table row rendering
+- **Server Components**: Reduced client-side JavaScript
+- **Image Optimization**: Next.js Image component
+
+##  Security Features
+
+- **Route Protection**: Authentication guards
+
+## Data Management
+
+The application uses mock data stored in `lib/data.ts`
+
+To run tests (when implemented):
+\`\`\`bash
+npm run test
+
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+yarn test
+\`\`\`
